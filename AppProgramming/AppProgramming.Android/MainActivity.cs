@@ -29,5 +29,6 @@ namespace AppProgramming.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        
     }
 }

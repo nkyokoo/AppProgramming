@@ -8,49 +8,70 @@
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
-
-    <StackLayout>
-        <ListView x:Name="ItemsListView"
+    <ContentPage.Resources>
+        <Color x:Key="DarkButtonBackground">#921813</Color>
+        <Style x:Key="FABPrimary" TargetType="Button">
+            <Setter Property="CornerRadius" Value="100"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource DarkButtonBackground}"/>
+            <Setter Property="HeightRequest" Value="55"/>
+            <Setter Property="WidthRequest" Value="55"/>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="Padding" Value="15"/>
+        </Style>
+    </ContentPage.Resources>
+    <AbsoluteLayout>
+        <StackLayout>
+           
+            <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-                ItemSelected="OnItemSelected">
-            <d:ListView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>First Item</x:String>
-                    <x:String>Second Item</x:String>
-                    <x:String>Third Item</x:String>
-                    <x:String>Fourth Item</x:String>
-                    <x:String>Fifth Item</x:String>
-                    <x:String>Sixth Item</x:String>
-                </x:Array>
-            </d:ListView.ItemsSource>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Text}" 
-                                d:Text="{Binding .}"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                            <Label Text="{Binding Description}" 
-                                d:Text="Item description"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-
+                CachingStrategy="RecycleElement">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Create your first task</x:String>
+                    
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView>
+                                <StackLayout Padding="10">
+                                    <StackLayout Orientation="Horizontal" >
+                                        <StackLayout Orientation="Vertical">
+                                            <CheckBox ClassId="{Binding Id}" IsChecked="{Binding Completed}" CheckedChanged="CheckBox_OnCheckedChanged"></CheckBox>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Text}" 
+                                           d:Text="{Binding .}"
+                                             Style="{DynamicResource ListItemTextStyle}" 
+                                             FontSize="16" />
+                                            <Label Text="{Binding Description}" 
+                                              d:Text="Item description"
+                                             Style="{DynamicResource ListItemDetailTextStyle}"
+                                             FontSize="13" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" VerticalOptions="End">
+                                            
+                                            <Button ClassId="{Binding Id}" Text="Delete" Clicked="Button_OnClicked" ></Button>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <Button x:Name="actionbutton" Clicked="AddItem_Clicked" ImageSource="baseline_add_white_18dp.png"
+                    IsVisible="True"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"  
+                 AbsoluteLayout.LayoutBounds=".95,.95,80,80" 
+                Style="{StaticResource FABPrimary}"  />
+    </AbsoluteLayout>
 </ContentPage>

@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppProgramming.Android", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppProgramming.iOS", "AppProgramming\AppProgramming.iOS\AppProgramming.iOS.csproj", "{E977BE12-7802-4493-9F58-C76BAD896A36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppProgramming", "AppProgramming\AppProgramming\AppProgramming.csproj", "{B5341827-5492-43DA-A0D7-FDAEE340982E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppProgramming", "AppProgramming\AppProgramming\AppProgramming.csproj", "{B5341827-5492-43DA-A0D7-FDAEE340982E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppProgramming.UWP", "AppProgramming\AppProgramming.UWP\AppProgramming.UWP.csproj", "{556511AC-0930-46E8-A983-7C1BF74FF58D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,18 @@ Global
 		{B5341827-5492-43DA-A0D7-FDAEE340982E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{B5341827-5492-43DA-A0D7-FDAEE340982E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{B5341827-5492-43DA-A0D7-FDAEE340982E}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Debug|Any CPU.Build.0 = Debug|x64
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Debug|iPhone.ActiveCfg = Debug|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Debug|iPhone.Build.0 = Debug|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Debug|iPhoneSimulator.ActiveCfg = Debug|x64
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Debug|iPhoneSimulator.Build.0 = Debug|x64
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Release|Any CPU.ActiveCfg = Release|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Release|Any CPU.Build.0 = Release|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Release|iPhone.ActiveCfg = Release|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Release|iPhone.Build.0 = Release|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Release|iPhoneSimulator.ActiveCfg = Release|ARM
+		{556511AC-0930-46E8-A983-7C1BF74FF58D}.Release|iPhoneSimulator.Build.0 = Release|ARM
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

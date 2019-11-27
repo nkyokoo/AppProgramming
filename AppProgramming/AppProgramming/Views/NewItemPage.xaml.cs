@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net.Mime;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,8 +9,6 @@ using AppProgramming.Models;
 
 namespace AppProgramming.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
@@ -18,11 +17,14 @@ namespace AppProgramming.Views
         public NewItemPage()
         {
             InitializeComponent();
+            newitemDataPicker.MinimumDate = DateTime.Now;
+            newitemDataPicker.Date = DateTime.Now;
 
             Item = new Item
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                Text = "",
+                Description = "",
+                
             };
 
             BindingContext = this;
@@ -30,8 +32,15 @@ namespace AppProgramming.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
+            if (TaskDescription.Text != "" && TaskName.Text != "")
+            {
+                 MessagingCenter.Send(this, "AddItem", Item);
+                            await Navigation.PopModalAsync();
+            }
+            else
+            {
+                DisplayAlert("Input error", "either text or description is empty, or both", "ok");
+            }
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)
