@@ -55,10 +55,10 @@
                                               d:Text="Item description"
                                              Style="{DynamicResource ListItemDetailTextStyle}"
                                              FontSize="13" />
+                                            <Label Text="{Binding Date}"></Label>
                                         </StackLayout>
                                         <StackLayout Orientation="Vertical" VerticalOptions="End">
-                                            
-                                            <Button ClassId="{Binding Id}" Text="Delete" Clicked="Button_OnClicked" ></Button>
+                                            <Button ClassId="{Binding Id}" Text="X" Clicked="Button_OnClicked" ></Button>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

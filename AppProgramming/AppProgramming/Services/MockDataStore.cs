@@ -41,6 +41,13 @@ namespace AppProgramming.Services
 
             return await Task.FromResult(true);
         }
+        public async Task<bool> MarkAsCompletedAsync(string id)
+        {
+            var oldItem = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            oldItem.Completed = true;
+
+            return await Task.FromResult(true);
+        }
 
         public async Task<Item> GetItemAsync(string id)
         {

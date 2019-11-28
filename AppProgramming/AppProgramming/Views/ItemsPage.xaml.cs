@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using System.Collections;
 
 using AppProgramming.Models;
+using AppProgramming.Services;
 using AppProgramming.Views;
 using AppProgramming.ViewModels;
 using Xamarin.Forms.Internals;
@@ -34,6 +35,7 @@ namespace AppProgramming.Views
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
+        
 
         protected override void OnAppearing()
         {
@@ -45,19 +47,17 @@ namespace AppProgramming.Views
 
         private void CheckBox_OnCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            foreach (var checkBox in _checkBoxes)
-            {
-                if (checkBox.IsChecked)
-                {
-                    
-                }
-                
-            }
+            CheckBox checkBox = (CheckBox) sender;
+           var id = checkBox.ClassId;
+           MessagingCenter.Send(this, "Completed", id);
+
         }
 
-        private void Button_OnClicked(object sender, EventArgs e)
+        async void Button_OnClicked(object sender, EventArgs e)
         {
-            
+            Button btn = (Button) sender;
+            MessagingCenter.Send(this, "DeleteItem", btn.ClassId);
+
         }
     }
 }

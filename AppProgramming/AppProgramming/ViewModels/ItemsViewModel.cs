@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using AppProgramming.Models;
 using AppProgramming.Views;
+using Xamarin.Forms.Internals;
 
 namespace AppProgramming.ViewModels
 {
@@ -26,6 +28,23 @@ namespace AppProgramming.ViewModels
                 var newItem = item as Item;
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
+            });
+            MessagingCenter.Subscribe<ItemsPage, string>(this, "DeleteItem", async (obj, id) =>
+            {
+                string itemid = id;
+                Item item = await DataStore.GetItemAsync(itemid);
+                Items.Remove(item);
+                await DataStore.DeleteItemAsync(itemid);
+            });
+            MessagingCenter.Subscribe<ItemsPage, string>(this, "Completed", async (obj, id) =>
+            {
+                string itemid = id;
+                Item item = await DataStore.GetItemAsync(itemid);
+                Items.Remove(item);
+                item.Completed = true;
+                Items.Add(item);
+                
+                await DataStore.MarkAsCompletedAsync(itemid);
             });
         }
 

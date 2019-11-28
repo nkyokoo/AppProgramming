@@ -39,7 +39,7 @@ namespace AppProgramming.Views
             }
             else
             {
-                DisplayAlert("Input error", "either text or description is empty, or both", "ok");
+                await DisplayAlert("Input error", "either text or description is empty, or both", "ok");
             }
         }
 

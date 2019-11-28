@@ -2,12 +2,17 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppProgramming.Views.Settings">
+             x:Class="AppProgramming.Views.Settings"
+             Title="Settings">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <StackLayout Orientation="Horizontal" >
+               <StackLayout Orientation="Vertical">
+                <Label Text="Dark Theme" />
+            </StackLayout>
+               <StackLayout Orientation="Vertical">
+                   <Switch ></Switch>
+               </StackLayout>
+           </StackLayout>
     </ContentPage.Content>
 </ContentPage>
